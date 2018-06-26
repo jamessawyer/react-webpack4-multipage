@@ -1,8 +1,13 @@
+const entry = require('./webpack.entry.conf');
+
+let newEntry = {};
+
+for (let name in entry) {
+  newEntry[name] = entry[name][0];
+}
+
 let config = {
-  entry: {
-    'index': './entryBuild/index.js',
-    'shop': './entryBuild/shop.js'
-  },
+  entry: newEntry,
   resolve: {
     extensions: ['.js', '.jsx', '.json', '.css', '.pcss']
   }

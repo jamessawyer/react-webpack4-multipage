@@ -4,6 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "entry": "node config/entry/entryBuild.js",
+    "devBuildHtml": "node config/webpack/webpack.devBuildHtml.conf.js",
+    "devNew": "yarn run entry && yarn run devBuildHtml",
     "dev": "webpack-dev-server --devtool eval --progress --colors --profile --config config/webpack/webpack.dev.conf.js"
   },
   "dependencies": {
