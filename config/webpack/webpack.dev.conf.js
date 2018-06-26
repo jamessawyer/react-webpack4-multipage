@@ -48,7 +48,10 @@ let config = merge(baseWebpackConfig, {
     rules: [
       {
         test: /\.jsx?$/,
-        use: ['babel-loader'],
+        use: [
+          'cache-loader', // 使用缓存提升构建速度
+          'babel-loader'
+        ],
         include: [
           path.resolve(__dirname, '../../app'),
           path.resolve(__dirname, '../../entryBuild'),

@@ -9,7 +9,7 @@ export default class Index extends Component {
         return (
             <div className="cont">
                 <Header />
-                <div className="demo">这是DEMO页面</div>
+                <div className="demo">这是DEMO</div>
                 <Footer />
             </div>
         );
