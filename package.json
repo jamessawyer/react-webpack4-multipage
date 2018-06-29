@@ -8,7 +8,7 @@
     "devBuildHtml": "node config/webpack/webpack.devBuildHtml.conf.js",
     "devNew": "yarn run entry && yarn run devBuildHtml",
     "dev": "webpack-dev-server --devtool eval --progress --colors --profile --config config/webpack/webpack.dev.conf.js",
-    "prod": "export BABEL_ENV=production && webpack --progress --colors --config config/webpack/webpack.prod.conf.js",
+    "prod": "set BABEL_ENV=production && webpack --progress --colors --config config/webpack/webpack.prod.conf.js",
     "ptp": "yarn run prod && gulp buildTime zip test pre"
   },
   "dependencies": {
