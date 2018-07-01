@@ -7,7 +7,7 @@ const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const baseWebpackConfig = require('./webpack.base.conf');
 const webpackFile = require('./webpack.file.conf');
 
-let config = merge(baseWebpackConfig, {
+const config = merge(baseWebpackConfig, {
   mode: 'development',
   output: {
     path: path.resolve(webpackFile.devDirectory),
@@ -52,19 +52,17 @@ let config = merge(baseWebpackConfig, {
         test: /\.jsx?$/,
         use: [
           'cache-loader', // 使用缓存提升构建速度
-          'babel-loader'
+          'babel-loader',
         ],
         include: [
           path.resolve(__dirname, '../../app'),
           path.resolve(__dirname, '../../entryBuild'),
         ],
-        exclude: [
-          path.resolve(__dirname, '../../node_modules'),
-        ],
+        exclude: [path.resolve(__dirname, '../../node_modules')],
       },
       {
         test: /\.jsx?$/,
-        enforce: "pre",
+        enforce: 'pre',
         use: [
           {
             options: {
@@ -72,7 +70,7 @@ let config = merge(baseWebpackConfig, {
               eslintPath: require.resolve('eslint'),
               // @remove-on-eject-begin
               baseConfig: {
-                extends: [require.resolve("eslint-config-react-app")],
+                extends: [require.resolve('eslint-config-react-app')],
               },
               // ignore: false
               useEslintrc: false,
@@ -81,12 +79,8 @@ let config = merge(baseWebpackConfig, {
             loader: require.resolve('eslint-loader'),
           },
         ],
-        include: [
-          path.resolve(__dirname, '../../app'),
-        ],
-        exclude: [
-          path.resolve(__dirname, '../../node_modules'),
-        ],
+        include: [path.resolve(__dirname, '../../app')],
+        exclude: [path.resolve(__dirname, '../../node_modules')],
       },
       {
         test: /\.(css|pcss)$/,
@@ -95,7 +89,7 @@ let config = merge(baseWebpackConfig, {
       },
       {
         test: /\.(png|jpg|gif|ttf|eot|woff|woff2|svg|swf)$/,
-        loader: 'file-loader?name=[name].[ext]&outputPath=' + webpackFile.resource + '/',
+        loader: `file-loader?name=[name].[ext]&outputPath=${webpackFile.resource}/`,
       },
     ],
   },
@@ -115,7 +109,7 @@ let config = merge(baseWebpackConfig, {
       },
     ],
     after() {
-      opn('http://localhost:' + this.port)
+      opn(`http://localhost:${this.port}`);
     },
   },
 });

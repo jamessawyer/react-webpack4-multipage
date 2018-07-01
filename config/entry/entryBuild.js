@@ -1,3 +1,4 @@
+/* eslint-disable */
 const fs = require('fs');
 const path = require('path');
 const rimraf = require('rimraf');
@@ -20,17 +21,12 @@ ReactDOM.render([<Header key="Header" />, <Index key="Index" />, <Footer key="Fo
 `;
 
 // 生成webpack entry 入口文件
-entry.map((data) => {
-  fs.writeFile(
-    entryBuildPath + '/' + data.name + '.js',
-    entryContent(data),
-    'utf8',
-    function(err) {
-      if (err) {
-        return console.log(err);
-      }
+entry.map(data => {
+  fs.writeFile(entryBuildPath + '/' + data.name + '.js', entryContent(data), 'utf8', function(err) {
+    if (err) {
+      return console.log(err);
     }
-  );
+  });
 });
 
 module.exports = entry;
