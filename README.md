@@ -29,3 +29,8 @@
     "prod": "set BABEL_ENV=production && webpack --progress --colors --config config/webpack/webpack.prod.conf.js", // 打包js html, 压缩 代码拆分等
   },
 ```
+
+## CODE QUALITY
+
+  - commit提交前,将文件提交到Staging，然后使用 **`yarn run precommit`** 对文件进行校验，是否存在errors,如果存在则提交失败
+  - 对js文件进行格式化处理 **`yarn run prettier`**
