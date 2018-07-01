@@ -1,3 +1,4 @@
+/* eslint-disable */
 const path = require('path');
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -78,7 +79,12 @@ let config = merge(baseWebpackConfig, {
       },
       {
         test: /\.(png|jpg|gif|ttf|eot|woff|woff2|svg)$/,
-        loader: 'url-loader?limit=8192&name=[name].[hash:8].[ext]&publicPath=../' + webpackFile.resourcePrefix + '&outputPath=' + webpackFile.resource + '/',
+        loader:
+          'url-loader?limit=8192&name=[name].[hash:8].[ext]&publicPath=../' +
+          webpackFile.resourcePrefix +
+          '&outputPath=' +
+          webpackFile.resource +
+          '/',
       },
       {
         test: /\.swf$/,
@@ -109,14 +115,12 @@ for (let chunkName in pages) {
 
 // 清除dist
 config.plugins.push(
-  new CleanWebpackPlugin(
-    [webpackFile.proDirectory],
-    {
-      root: path.resolve(__dirname, '../../'),
-      verbose: true,
-      dry: false,
-    }
-));
+  new CleanWebpackPlugin([webpackFile.proDirectory], {
+    root: path.resolve(__dirname, '../../'),
+    verbose: true,
+    dry: false,
+  })
+);
 
 let copyObj = [
   /**
@@ -125,18 +129,21 @@ let copyObj = [
    * { from: './app/public/file', to: './resource' }, // 一些固定的文件 如下载文件
    */
   {
-    from: './app/public/img/favicon.ico', to: './' // 网站的favicon.ico
-  }
+    from: './app/public/img/favicon.ico',
+    to: './', // 网站的favicon.ico
+  },
 ];
 
 let copyArr = [];
 copyObj.map(data => {
   copyArr.push(
-    new CopyWebpackPlugin([{
-      from: data.from,
-      to: data.to,
-      ignore: ['.*']
-    }])
+    new CopyWebpackPlugin([
+      {
+        from: data.from,
+        to: data.to,
+        ignore: ['.*'],
+      },
+    ])
   );
 });
 

@@ -1,3 +1,4 @@
+/* eslint-disable */
 const fs = require('fs');
 const rimraf = require('rimraf');
 const webpackFile = require('./webpack.file.conf');
@@ -20,18 +21,20 @@ let scriptInsert = `
 `;
 
 htmlCont = htmlCont.replace('</body>', scriptInsert + '</body>');
-entryBuild.map((data) => {
+entryBuild.map(data => {
   fs.writeFile(
     webpackFile.devDirectory + '/' + data.name + '.html',
-    htmlCont.replace('js/key.js', 'js/' + data.name + '.js').replace(
-      '<%= htmlWebpackPlugin.options.title %>',
-      webpackComConf.titleFun(data.name, data.title),
-      'utf8',
-      function(err) {
-        if (err) {
-          console.log(err);
+    htmlCont
+      .replace('js/key.js', 'js/' + data.name + '.js')
+      .replace(
+        '<%= htmlWebpackPlugin.options.title %>',
+        webpackComConf.titleFun(data.name, data.title),
+        'utf8',
+        function(err) {
+          if (err) {
+            console.log(err);
+          }
         }
-      }
-    )
+      )
   );
-})
+});

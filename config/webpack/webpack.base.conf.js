@@ -1,3 +1,4 @@
+/* eslint-disable */
 const entry = require('./webpack.entry.conf');
 
 let newEntry = {};
@@ -9,8 +10,8 @@ for (let name in entry) {
 let config = {
   entry: newEntry,
   resolve: {
-    extensions: ['.js', '.jsx', '.json', '.css', '.pcss']
-  }
+    extensions: ['.js', '.jsx', '.json', '.css', '.pcss'],
+  },
 };
 
 module.exports = config;
